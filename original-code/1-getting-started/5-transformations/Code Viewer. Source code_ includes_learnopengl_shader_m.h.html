@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader_m.h -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+	<title>Code Viewer. Source code: includes/learnopengl/shader_m.h</title>
+	<link rel="stylesheet" type="text/css" href="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/layout.css">
+    <link rel="stylesheet" type="text/css" href="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/obsidian.css">
+    <script src="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/jquery-1.11.0.min.js"></script>
+    <script src="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/hoverintent.js"></script>
+    <script src="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/highlight.pack.js"></script>
+    <script src="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/functions.js"></script>
+    <script type="text/javascript" src="./Code Viewer. Source code_ includes_learnopengl_shader_m.h_files/MathJax.js"> // Has to be loaded last due to content bug </script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        window.onload = function() {
+            $("#codez").mousedown(function() { switchNumbering(true); });
+            $("#codez").mouseup(function() { switchNumbering(false); });
+            
+            function switchNumbering(hide)
+            {     
+                if(hide)
+                    $('span.number').hide();
+                else
+                    $('span.number').show();
+            }
+            
+            // Create all function callbacks
+            SetFunctionTagCallbacks();
+        };
+        
+    </script>
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body style="margin:0; padding:0; background-image: none; background-color: #282B2E;"><div id="MathJax_Message" style="display: none;"></div>
+
+<pre style="width: 100%; height: 100%;"><code id="codez" style="margin:0; padding:25; border:0; border-radius:0;" class=" hljs cpp"><span class="hljs-preprocessor">#ifndef SHADER_H</span>
+<span class="hljs-preprocessor">#define SHADER_H</span>
+
+<span class="hljs-preprocessor">#include &lt;glad/glad.h&gt;</span>
+<span class="hljs-preprocessor">#include &lt;glm/glm.hpp&gt;</span>
+
+<span class="hljs-preprocessor">#include &lt;string&gt;</span>
+<span class="hljs-preprocessor">#include &lt;fstream&gt;</span>
+<span class="hljs-preprocessor">#include &lt;sstream&gt;</span>
+<span class="hljs-preprocessor">#include &lt;iostream&gt;</span>
+
+<span class="hljs-keyword">class</span> Shader
+{
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> ID;
+    <span class="hljs-comment">// constructor generates the shader on the fly</span>
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    Shader(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* vertexPath, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* fragmentPath)
+    {
+        <span class="hljs-comment">// 1. retrieve the vertex/fragment source code from filePath</span>
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> vertexCode;
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> fragmentCode;
+        <span class="hljs-built_in">std</span>::ifstream vShaderFile;
+        <span class="hljs-built_in">std</span>::ifstream fShaderFile;
+        <span class="hljs-comment">// ensure ifstream objects can throw exceptions:</span>
+        vShaderFile.exceptions (<span class="hljs-built_in">std</span>::ifstream::failbit | <span class="hljs-built_in">std</span>::ifstream::badbit);
+        fShaderFile.exceptions (<span class="hljs-built_in">std</span>::ifstream::failbit | <span class="hljs-built_in">std</span>::ifstream::badbit);
+        <span class="hljs-keyword">try</span> 
+        {
+            <span class="hljs-comment">// open files</span>
+            vShaderFile.open(vertexPath);
+            fShaderFile.open(fragmentPath);
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">stringstream</span> vShaderStream, fShaderStream;
+            <span class="hljs-comment">// read file's buffer contents into streams</span>
+            vShaderStream &lt;&lt; vShaderFile.rdbuf();
+            fShaderStream &lt;&lt; fShaderFile.rdbuf();		
+            <span class="hljs-comment">// close file handlers</span>
+            vShaderFile.close();
+            fShaderFile.close();
+            <span class="hljs-comment">// convert stream into string</span>
+            vertexCode = vShaderStream.str();
+            fragmentCode = fShaderStream.str();			
+        }
+        <span class="hljs-keyword">catch</span> (<span class="hljs-built_in">std</span>::ifstream::failure e)
+        {
+            <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ERROR::SHADER::FILE_NOT_SUCCESFULLY_READ"</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+        }
+        <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>* vShaderCode = vertexCode.c_str();
+        <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> * fShaderCode = fragmentCode.c_str();
+        <span class="hljs-comment">// 2. compile shaders</span>
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> vertex, fragment;
+        <span class="hljs-comment">// vertex shader</span>
+        vertex =<function id="37"> glCreateShader(</function>GL_VERTEX_SHADER);
+       <function id="42"> glShaderSource(</function>vertex, <span class="hljs-number">1</span>, &amp;vShaderCode, NULL);
+       <function id="38"> glCompileShader(</function>vertex);
+        checkCompileErrors(vertex, <span class="hljs-string">"VERTEX"</span>);
+        <span class="hljs-comment">// fragment Shader</span>
+        fragment =<function id="37"> glCreateShader(</function>GL_FRAGMENT_SHADER);
+       <function id="42"> glShaderSource(</function>fragment, <span class="hljs-number">1</span>, &amp;fShaderCode, NULL);
+       <function id="38"> glCompileShader(</function>fragment);
+        checkCompileErrors(fragment, <span class="hljs-string">"FRAGMENT"</span>);
+        <span class="hljs-comment">// shader Program</span>
+        ID =<function id="36"> glCreateProgram(</function>);
+       <function id="34"> glAttachShader(</function>ID, vertex);
+       <function id="34"> glAttachShader(</function>ID, fragment);
+       <function id="35"> glLinkProgram(</function>ID);
+        checkCompileErrors(ID, <span class="hljs-string">"PROGRAM"</span>);
+        <span class="hljs-comment">// delete the shaders as they're linked into our program now and no longer necessery</span>
+       <function id="46"> glDeleteShader(</function>vertex);
+       <function id="46"> glDeleteShader(</function>fragment);
+
+    }
+    <span class="hljs-comment">// activate the shader</span>
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> use() <span class="hljs-keyword">const</span>
+    { 
+       <function id="28"> glUseProgram(</function>ID); 
+    }
+    <span class="hljs-comment">// utility uniform functions</span>
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setBool(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">bool</span> value) <span class="hljs-keyword">const</span>
+    {         
+       <function id="44"> glUniform1</function>i<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), (<span class="hljs-keyword">int</span>)value); 
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setInt(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">int</span> value) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform1</function>i<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), value); 
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setFloat(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">float</span> value) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform1</function>f<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), value); 
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setVec2(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> glm::<span class="hljs-built_in">vec2</span> &amp;value) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform2</function>fv<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), <span class="hljs-number">1</span>, &amp;value[<span class="hljs-number">0</span>]); 
+    }
+    <span class="hljs-keyword">void</span> setVec2(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform2</function>f<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), x, y); 
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setVec3(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> glm::<span class="hljs-built_in">vec3</span> &amp;value) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform3</function>fv<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), <span class="hljs-number">1</span>, &amp;value[<span class="hljs-number">0</span>]); 
+    }
+    <span class="hljs-keyword">void</span> setVec3(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> z) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform3</function>f<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), x, y, z); 
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setVec4(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> glm::<span class="hljs-built_in">vec4</span> &amp;value) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform4</function>fv<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), <span class="hljs-number">1</span>, &amp;value[<span class="hljs-number">0</span>]); 
+    }
+    <span class="hljs-keyword">void</span> setVec4(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> z, <span class="hljs-keyword">float</span> w) <span class="hljs-keyword">const</span>
+    { 
+       <function id="44"> glUniform4</function>f<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), x, y, z, w); 
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setMat2(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> glm::<span class="hljs-built_in">mat2</span> &amp;mat) <span class="hljs-keyword">const</span>
+    {
+       <function id="44"> glUniformM</function>atrix2fv<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), <span class="hljs-number">1</span>, <span class="hljs-built_in">GL_FALSE</span>, &amp;mat[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setMat3(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> glm::<span class="hljs-built_in">mat3</span> &amp;mat) <span class="hljs-keyword">const</span>
+    {
+       <function id="44"> glUniformM</function>atrix3fv<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), <span class="hljs-number">1</span>, <span class="hljs-built_in">GL_FALSE</span>, &amp;mat[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);
+    }
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> setMat4(<span class="hljs-keyword">const</span> <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> &amp;name, <span class="hljs-keyword">const</span> glm::<span class="hljs-built_in">mat4</span> &amp;mat) <span class="hljs-keyword">const</span>
+    {
+       <function id="44"> glUniformM</function>atrix4fv<function id="45">(glGetUniformLocation(</function>ID, name.c_str()), <span class="hljs-number">1</span>, <span class="hljs-built_in">GL_FALSE</span>, &amp;mat[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);
+    }
+
+<span class="hljs-keyword">private</span>:
+    <span class="hljs-comment">// utility function for checking shader compilation/linking errors.</span>
+    <span class="hljs-comment">// ------------------------------------------------------------------------</span>
+    <span class="hljs-keyword">void</span> checkCompileErrors(<span class="hljs-keyword">GLuint</span> shader, <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> type)
+    {
+        <span class="hljs-keyword">GLint</span> success;
+        <span class="hljs-keyword">GLchar</span> infoLog[<span class="hljs-number">1024</span>];
+        <span class="hljs-keyword">if</span> (type != <span class="hljs-string">"PROGRAM"</span>)
+        {
+           <function id="39"> glGetShaderiv(</function>shader, GL_COMPILE_STATUS, &amp;success);
+            <span class="hljs-keyword">if</span> (!success)
+            {
+               <function id="40"> glGetShaderInfoLog(</function>shader, <span class="hljs-number">1024</span>, NULL, infoLog);
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ERROR::SHADER_COMPILATION_ERROR of type: "</span> &lt;&lt; type &lt;&lt; <span class="hljs-string">"\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="hljs-string">"\n -- --------------------------------------------------- -- "</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+            }
+        }
+        <span class="hljs-keyword">else</span>
+        {
+           <function id="41"> glGetProgramiv(</function>shader, GL_LINK_STATUS, &amp;success);
+            <span class="hljs-keyword">if</span> (!success)
+            {
+                glGetProgramInfoLog(shader, <span class="hljs-number">1024</span>, NULL, infoLog);
+                <span class="hljs-built_in">std</span>::<span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"ERROR::PROGRAM_LINKING_ERROR of type: "</span> &lt;&lt; type &lt;&lt; <span class="hljs-string">"\n"</span> &lt;&lt; infoLog &lt;&lt; <span class="hljs-string">"\n -- --------------------------------------------------- -- "</span> &lt;&lt; <span class="hljs-built_in">std</span>::<span class="hljs-built_in">endl</span>;
+            }
+        }
+    }
+};
+<span class="hljs-preprocessor">#endif</span></code></pre>
+
+<div id="hover">
+        HI
+</div>
+
+
+</body></html>
